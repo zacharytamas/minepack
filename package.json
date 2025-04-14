@@ -1,11 +1,20 @@
 {
   "name": "minepack",
+  "private": true,
+  "version": "0.0.1",
   "module": "src/main.ts",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "vite": "^6.2.6"
   }
 }
