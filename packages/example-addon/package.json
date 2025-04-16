@@ -1,4 +1,14 @@
 {
   "name": "@minepack/example-addon",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "rollup": "^4.40.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
 }

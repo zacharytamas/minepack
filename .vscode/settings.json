@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["minepack"]
+  "cSpell.words": ["minepack"],
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
 }
