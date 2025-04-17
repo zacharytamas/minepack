@@ -6,14 +6,22 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "install": "node-gyp rebuild",
+    "prebuild": "node ./scripts/check-dependencies.js",
+    "build": "node-gyp rebuild",
+    "start": "node dist/main.js"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "node-gyp": "^10.0.1"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
+    "node-addon-api": "^7.0.0",
     "vite": "^6.2.6"
   }
 }
