@@ -1,40 +1,23 @@
-import afcClient from './afc-client'
+import { IosDaemon } from './ios_daemon'
 
 /**
  * Main application entry point
  */
 async function main() {
-  try {
-    // Initialize the libimobiledevice library and connect to a device
-    console.log('Initializing libimobiledevice...')
-    const initResult = afcClient.initialize()
-    console.log(`Initialization result: ${initResult}`)
+  const daemon = new IosDaemon()
+  daemon.start()
 
-    // Start the AFC service
-    console.log('Starting AFC service...')
-    const afcResult = afcClient.startAFC()
-    console.log(`AFC service result: ${afcResult}`)
+  await daemon.configure({
+    addonName: "Ball's Life",
+    localBehaviorPacksPath:
+      "/Users/zachary/Library/Mobile Documents/com~apple~CloudDocs/Bridge Projects/com.mojang/development_behavior_packs/Ball's Life BP",
+    localResourcePacksPath:
+      "/Users/zachary/Library/Mobile Documents/com~apple~CloudDocs/Bridge Projects/com.mojang/development_resource_packs/Ball's Life RP",
+    localSkinPacksPath:
+      "/Users/zachary/Library/Mobile Documents/com~apple~CloudDocs/Bridge Projects/com.mojang/development_skin_packs/Ball's Life SP",
+  })
 
-    // Example: List the contents of the root directory
-    console.log('Listing root directory...')
-    const rootContents = afcClient.listDirectory('/')
-    console.log('Root directory contents:')
-    for (const item of rootContents) {
-      console.log(`- ${item}`)
-    }
-
-    // Example: Read a file (if it exists)
-    if (rootContents.includes('Documents')) {
-      console.log('Listing Documents directory...')
-      const documentsContents = afcClient.listDirectory('/Documents')
-      console.log('Documents directory contents:')
-      for (const item of documentsContents) {
-        console.log(`- ${item}`)
-      }
-    }
-  } catch (error) {
-    console.error('Error:', error)
-  }
+  await daemon.pushResourcePack('pack_icon.png')
 }
 
 // Run the main function
