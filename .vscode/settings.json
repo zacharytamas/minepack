@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["minepack"],
+  "cSpell.words": [
+    "lockdown",
+    "minepack",
+    "mojang",
+    "pymobiledevice",
+    "usbmux"
+  ],
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   }
